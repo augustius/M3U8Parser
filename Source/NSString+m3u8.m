@@ -15,7 +15,7 @@
 #import "M3U8TagsAndAttributes.h"
 #import "NSArray+m3u8.h"
 
-@implementation NSString (m3u8)
+@implementation NSString (m3u8p)
 
 /**
  The Extended M3U file format defines two tags: EXTM3U and EXTINF.  An
@@ -24,12 +24,12 @@
  
  reference url:http://tools.ietf.org/html/draft-pantos-http-live-streaming-00
  */
-- (BOOL)m3u_isExtendedM3Ufile1 {
+- (BOOL)m3u_isExtendedM3Ufile {
     return [self hasPrefix:M3U8_EXTM3U];
 }
 
 - (BOOL)m3u_isMasterPlaylist {
-    BOOL isM3U = [self m3u_isExtendedM3Ufile1];
+    BOOL isM3U = [self m3u_isExtendedM3Ufile];
     if (isM3U) {
         NSRange r1 = [self rangeOfString:M3U8_EXT_X_STREAM_INF];
         NSRange r2 = [self rangeOfString:M3U8_EXT_X_I_FRAME_STREAM_INF];
@@ -41,7 +41,7 @@
 }
 
 - (BOOL)m3u_isMediaPlaylist {
-    BOOL isM3U = [self m3u_isExtendedM3Ufile1];
+    BOOL isM3U = [self m3u_isExtendedM3Ufile];
     if (isM3U) {
         NSRange r = [self rangeOfString:M3U8_EXTINF];
         if (r.location != NSNotFound) {
