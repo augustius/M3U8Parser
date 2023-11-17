@@ -52,7 +52,7 @@
 - (id)initWithString:(NSString *)string originalURL:(NSURL *)originalURL
              baseURL:(NSURL *)baseURL error:(NSError * *)error {
 
-    if (!string.m3u_isExtendedM3Ufile) {
+    if (!string.m3u_isExtendedM3Ufile1) {
         *error = [NSError errorWithDomain:@"M3U8PlaylistModel" code:-998 userInfo:@{NSLocalizedDescriptionKey:@"The content is not a m3u8 playlist"}];
         return nil;
     }

@@ -24,12 +24,12 @@
  
  reference url:http://tools.ietf.org/html/draft-pantos-http-live-streaming-00
  */
-- (BOOL)m3u_isExtendedM3Ufile {
+- (BOOL)m3u_isExtendedM3Ufile1 {
     return [self hasPrefix:M3U8_EXTM3U];
 }
 
 - (BOOL)m3u_isMasterPlaylist {
-    BOOL isM3U = [self m3u_isExtendedM3Ufile];
+    BOOL isM3U = [self m3u_isExtendedM3Ufile1];
     if (isM3U) {
         NSRange r1 = [self rangeOfString:M3U8_EXT_X_STREAM_INF];
         NSRange r2 = [self rangeOfString:M3U8_EXT_X_I_FRAME_STREAM_INF];
@@ -41,7 +41,7 @@
 }
 
 - (BOOL)m3u_isMediaPlaylist {
-    BOOL isM3U = [self m3u_isExtendedM3Ufile];
+    BOOL isM3U = [self m3u_isExtendedM3Ufile1];
     if (isM3U) {
         NSRange r = [self rangeOfString:M3U8_EXTINF];
         if (r.location != NSNotFound) {
